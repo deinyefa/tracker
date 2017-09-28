@@ -12,10 +12,10 @@
 <body>
     <div>
         <ul>
-            <li><a href="{{ route('home') }}">Dashboard</a></li>
+            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li><a href="{{ route('categories.index') }}">Categories</a></li>
-            <li><a href="#">Expenses</a></li>
-            <li><a href="#">Income</a></li>
+            <li><a href="{{ route('expenses.index') }}">Expenses</a></li>
+            <li><a href="{{ route('income.index') }}">Income</a></li>
         </ul>
     </div>
     @yield('content')

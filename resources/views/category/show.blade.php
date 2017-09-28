@@ -1,7 +1,8 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
-    <div class="container">
+<div id="page-wrapper">
+    <div class="container content">
         <div class="row">
             <h2>{{ $category->name }}</h2>
             <p class="lead">{{ $category->description }}</p>
@@ -9,7 +10,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>Income</h1>
-                <a class="btn btn-outline-info" href="#" role="button">Add an Income</a>
+                <a class="btn btn-outline-info" href="{{ route('income.create') }}" role="button">Add an Income</a>
                 <table class="table">
                     <thead class="thead-inverse">
                         <tr>
@@ -23,7 +24,7 @@
                         @foreach ($income as $made)
                             <tr>
                                 <th scope="row">{{ $made->id }}</th>
-                                <td>{{ $made->cents }}</td>
+                                <td>{{ number_format(($made->cents / 100), 2) }}</td>
                                 <td>{{ $made->description }}</td>
                                 <td>{{ $made->created_at->format('d-m-Y') }}</td>
                             </tr>
@@ -33,7 +34,7 @@
             </div>
             <div class="col-md-6">
                 <h1>Expenses</h1>
-                <a class="btn btn-outline-info" href="#" role="button">Add an Expense</a>
+                <a class="btn btn-outline-info" href="{{ route('expenses.create') }}" role="button">Add an Expense</a>
                 <table class="table">
                     <thead class="thead-inverse">
                         <tr>
@@ -47,7 +48,7 @@
                         @foreach ($expense as $spent)
                             <tr>
                                 <th scope="row">{{ $spent->id }}</th>
-                                <td>{{ $spent->cents }}</td>
+                                <td>{{ number_format(($spent->cents / 100), 2) }}</td>
                                 <td>{{ $spent->description }}</td>
                                 <td>{{ $spent->created_at->format('d-m-Y') }}</td>
                             </tr>
@@ -57,4 +58,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

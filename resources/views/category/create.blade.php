@@ -1,7 +1,8 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
-    <div class="container">
+<div id="page-wrapper">
+    <div class="container content">
         <div class="row">
             <h1>Create Category</h1>
             <p>Create new category here!</p>
@@ -23,5 +24,5 @@
             </form>
         </div>
     </div>
-    
+</div>    
 @endsection

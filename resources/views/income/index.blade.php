@@ -4,23 +4,28 @@
 <div id="page-wrapper">
     <div class="container content">
         <div class="row">
-            <a class="btn btn-outline-info" href="{{ route('categories.create') }}">New Category</a>
+            <div class="col-md-12">
+                <h1>Here's a list of all your income</h1>
+            </div>
         </div>
         <div class="row">
+            <a href="{{ route('income.create') }}">Add a new income</a>
             <table class="table">
                 <thead class="thead-inverse">
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
+                        <th>Made (CAD)</th>
                         <th>Description</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($income as $made)
                         <tr>
-                            <th scope="row">{{ $category->id }}</th>
-                            <td><a href="{{ route('categories.show', [$category->id]) }}">{{ $category->name }}</a></td>
-                            <td>{{ $category->description }}</td>
+                            <th scope="row">{{ $made->id }}</th>
+                            <td>{{ number_format(($made->cents / 100), 2) }}</td>
+                            <td>{{ $made->description }}</td>
+                            <td>{{ $made->created_at->format('d-m-Y') }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -28,4 +33,5 @@
         </div>
     </div>
 </div>
+    
 @endsection

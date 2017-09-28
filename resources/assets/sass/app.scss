@@ -8,3 +8,169 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+
+// ------------- DASHBOARD ------------------ //
+.nav-side-menu {
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 1.5rem;
+    font-weight: 200;
+    position: fixed;
+    top: 0;
+    width: 25%;
+    height: 100%;
+    background-color: $input-border-focus;
+
+    @media (max-width: $md){
+        position: relative;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .brand {
+        background-color: $brand-primary;
+        line-height: 50px;
+        display: block;
+        text-align: center;
+        font-size: 14px;
+
+        @media (max-width: $md){
+            text-align: left !important;
+            font-size: 22px;
+            padding-left: 20px;
+            line-height: 50px !important;
+        }
+    }
+
+    .toggle-btn {
+        display: none;
+
+        @media (max-width: $md){
+            display: block;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            z-index: 10 !important;
+            padding: 3px;
+            background-color: #ffffff;
+            color: #000;
+            width: 40px;
+            text-align: center;
+        }
+    }
+
+    ul, li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        line-height: 35px;
+        cursor: pointer;
+    }
+
+    ul :not(collapsed) .arrow:before,
+    li :not(collapsed) .arrow:before {
+        font-family: FontAwesome;
+        content: "\f078";
+        display: inline-block;
+        padding-left: 10px;
+        padding-right: 10px;
+        vertical-align: middle;
+        float: none;
+    }
+
+    ul:active, li:active {
+        border-left: 3px solid #d19b3d;
+        background-color: #4f5b69;
+    }
+
+    ul .sub-menu li.active,
+    li .sub-menu li.active {
+      color: #d19b3d;
+    }
+
+    ul .sub-menu li.active a,
+    li .sub-menu li.active a {
+      color: #d19b3d;
+    }
+
+    ul .sub-menu li,
+    li .sub-menu li {
+      background-color: #181c20;
+      border: none;
+      line-height: 28px;
+      border-bottom: 1px solid #23282e;
+      margin-left: 0px;
+    }
+
+    ul .sub-menu li:hover,
+    li .sub-menu li:hover {
+      background-color: #020203;
+    }
+
+    ul .sub-menu li:before,
+    li .sub-menu li:before {
+      font-family: FontAwesome;
+      content: "\f105";
+      display: inline-block;
+      padding-left: 10px;
+      padding-right: 10px;
+      vertical-align: middle;
+    }
+
+    li {
+      padding-left: 0px;
+      border-left: 3px solid #2e353d;
+    }
+
+    li a {
+      text-decoration: none;
+      color: $text-color;
+      padding: 1.5rem 0;
+      display: block;
+    }
+
+    li a i {
+      padding-left: 10px;
+      width: 20px;
+      padding-right: 30px;
+    }
+
+    li:hover {
+      border-left: 3px solid #d19b3d;
+      background-color: #4f5b69;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      transition: all 1s ease;
+    }
+}
+
+@media (min-width: $md) {
+    .nav-side-menu .menu-list .menu-content {
+      display: block;
+    }
+}
+
+#page-wrapper {
+    width: 100%;        
+    padding: 0;
+}
+
+@media (min-width: $md) {
+    #page-wrapper {
+        position: fixed;
+        left: 25%;
+        width: 75%;
+        padding: 1.5em;
+    }
+    .col-md-8 {
+        margin-left: 0;
+    }
+    .content {
+        width: 100%;
+    }
+}

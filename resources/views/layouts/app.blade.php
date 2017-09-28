@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/3449f04309.js"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -70,7 +73,28 @@
                 </div>
             </div>
         </nav>
+        <nav class="nav-side-menu">
+            <div class="brand">Tracker</div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li>
+                            <a href="{{ route('dashboard') }}"><i class="fa fa-dashboard fa-lg"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('categories.index') }}"><i class="fa fa-bars fa-lg"></i> Categories</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('income.index') }}"><i class="fa fa-long-arrow-left fa-lg"></i> Income</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('expenses.index') }}"><i class="fa fa-long-arrow-right fa-lg"></i> Expenses</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         @yield('content')
     </div>
 

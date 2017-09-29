@@ -57,6 +57,16 @@
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="income-chart"></div>
+                @areachart('Income Chart', 'income-chart')
+            </div>
+            <div class="col-md-6">
+                <div id="expense-chart"></div>
+                @areachart('Expense Chart', 'expense-chart')
+            </div> 
+        </div>
     </div>
 </div>
 @endsection

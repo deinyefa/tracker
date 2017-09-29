@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Khill\Lavacharts\Laravel\LavachartsFacade as Lava;
 use App\Category;
 use App\Income;
 use App\Expense;
@@ -58,9 +59,36 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
+
         $income = $category->income;
+        $incomeChart = Lava::DataTable();
+        $incomeChart->addDateColumn('Date')
+                    ->addNumberColumn('Income');
+        foreach ($income as $i) { 
+            $incomeChart->addRow([$i->created_at->format('d-m-Y'), number_format(($i->cents / 100), 2)]);
+        }
+        Lava::AreaChart('Income Chart', $incomeChart, [
+            'title' => 'Income Growth',
+            'legend' => [
+                'position' => 'in'
+            ]
+        ]);
+                    
         $expense = $category->expense;
-        return view('category.show')->with('category', $category)->with('income', $income)->with('expense', $expense);
+        $expenseChart = Lava::DataTable();
+        $expenseChart->addDateColumn('Date')
+                    ->addNumberColumn('Expense');
+        foreach ($expense as $e) {
+            $expenseChart->addRow([$e->created_at->format('d-m-Y'), number_format(($e->cents / 100), 2)]);
+        }
+        Lava::AreaChart('Expense Chart', $expenseChart, [
+            'title' => 'Expenditure',
+            'legend' => [
+                'position' => 'in'
+            ]
+        ]);
+
+        return view('category.show', ['category' => $category, 'income' => $income, 'expense' => $expense]);
     }
 
     /**
